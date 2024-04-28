@@ -8,25 +8,66 @@ class Program
         string grade_text = Console.ReadLine();
         float grade = float.Parse(grade_text);
         
+        string letter = "";
+        string sign = "";
+
         if (grade >= 90)
         {
-            Console.WriteLine("Your grade is an A!");
+            letter = "A";
         }
         else if (grade >= 80)
         {
-            Console.WriteLine("Your grade is an B");
+            letter = "B";
         }
         else if (grade >= 70)
         {
-            Console.WriteLine("Your grade is a C");
+            letter = "C";
         }
         else if (grade >= 60)
         {
-            Console.WriteLine("Your grade is a D");
+            letter = "D";
         }
         else if (grade < 60)
         {
-            Console.WriteLine("You are failing this class!");
+            letter = "F";
         }
+
+        int lastDigit = (int)grade % 10;
+        if (grade >= 60 && grade < 70)
+        {
+            if (lastDigit >= 7)
+            {
+                sign = "+";
+            }
+            else if (lastDigit < 3)
+            {
+                sign = "-";
+            }
+        }
+
+        else if (grade >= 70 && grade < 90)
+        {
+            if (lastDigit >= 7)
+            {
+                sign = "+";
+            }
+            else if (lastDigit < 3)
+            {
+                sign = "-";
+            }
+        }  
+
+        string finalGrade = letter + sign;
+
+        Console.WriteLine($"Your grade is {finalGrade}");  
+        if (grade >= 70)
+        {
+            Console.WriteLine("Congratulations! You passed the course.");
+        }
+        else
+        {
+            Console.WriteLine("Keep working hard! You'll get it next time.");
+        }   
+
     }
 }
