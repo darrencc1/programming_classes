@@ -25,7 +25,5 @@ class Program
         {
             Console.WriteLine(num);
         }
-        Console.WriteLine($"Sum: {sum}");
-    
-    }
+        Console.WriteLine($"Sum: {sum}");9u999
 }
