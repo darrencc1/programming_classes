@@ -1,9 +1,8 @@
 using System;
+using System.Transactions;
 
-class journal
+class Journal
 {
-    static void Main(string[] args)
-    {
-        Console.WriteLine("Hello Develop02 World!");
-    }
+    private List<entry> entries;
+    public journal()
 }
