@@ -1,26 +1,47 @@
 using System;
 
 
-public class Journal
+class Journal
 {
     private List<Entry> entries = new List<Entry>();
 
-    public void NewEntry()
+    public void AddEntry(Entry entry)
     {
-        string prompt = "What is one thing you are grateful for?";
-        Console.WriteLine($"{prompt}");
-        Console.WriteLine("Enter your journal entry:");
-        string response = Console.ReadLine();
-        Entry entry = new Entry(response);
         entries.Add(entry);
     }
 
     public void DisplayEntries()
     {
-        Console.WriteLine("Journal Entries:");
         foreach (var entry in entries)
         {
-            Console.WriteLine(entry.Content);
+            Console.WriteLine($"Date: {entry.Date}");
+            Console.WriteLine($"Prompt: {entry.Prompt}");
+            Console.WriteLine($"Response: {entry.UserEntry}");
+            Console.WriteLine();
+        }
+    }
+
+    public string SerializeEntries()
+    {
+        string serialized = "";
+        foreach (var entry in entries)
+        {
+            serialized += $"{entry.Date}|{entry.Prompt}|{entry.UserEntry}\n";
+        }
+        return serialized.Trim();
+    }
+
+    public void DeserializeEntries(string data)
+    {
+        entries.Clear();
+        string[] lines = data.Split('\n');
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split('|');
+            DateTime date = DateTime.Parse(parts[0]);
+            string prompt = parts[1];
+            string userEntry = parts[2];
+            entries.Add(new Entry(userEntry, prompt, date));
         }
     }
 }
