@@ -21,6 +21,4 @@ static void Main(string[] args)
             Console.Clear();
             Console.WriteLine(scripture.GetMaskedText());
             Console.WriteLine("\nAll words are hidden. Press Enter to end the program.");
-            Console.ReadLine();
-        }
-}
+            Console.ReadLine();       
